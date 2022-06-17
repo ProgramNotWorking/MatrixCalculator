@@ -16,23 +16,31 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font size="20"/>
+        </properties>
       </component>
       <component id="9aa19" class="javax.swing.JTextField" binding="mas11">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="40" height="-1"/>
+            <maximum-size width="40" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font size="20"/>
+        </properties>
       </component>
       <component id="4533a" class="javax.swing.JTextField" binding="mas21">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="40" height="-1"/>
+            <maximum-size width="40" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font size="20"/>
+        </properties>
       </component>
       <component id="b5f73" class="javax.swing.JTextField" binding="mas31">
         <constraints>
@@ -41,6 +49,7 @@
           </grid>
         </constraints>
         <properties>
+          <font size="20"/>
           <visible value="true"/>
         </properties>
       </component>
@@ -67,6 +76,8 @@
           </grid>
         </constraints>
         <properties>
+          <font size="20"/>
+          <text value=""/>
           <visible value="true"/>
         </properties>
       </component>
@@ -74,17 +85,23 @@
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="40" height="-1"/>
+            <maximum-size width="40" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font size="20"/>
+        </properties>
       </component>
       <component id="40982" class="javax.swing.JTextField" binding="mas12">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="40" height="-1"/>
+            <maximum-size width="40" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font size="20"/>
+        </properties>
       </component>
       <component id="58bca" class="javax.swing.JButton" binding="threeOnThreeButton">
         <constraints>
@@ -101,6 +118,7 @@
           </grid>
         </constraints>
         <properties>
+          <font size="20"/>
           <visible value="true"/>
         </properties>
       </component>
@@ -111,6 +129,7 @@
           </grid>
         </constraints>
         <properties>
+          <font size="20"/>
           <visible value="true"/>
         </properties>
       </component>
@@ -121,6 +140,7 @@
           </grid>
         </constraints>
         <properties>
+          <font size="20"/>
           <visible value="true"/>
         </properties>
       </component>
