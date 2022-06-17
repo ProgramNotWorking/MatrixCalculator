@@ -30,7 +30,7 @@ public class MatrixForm extends JFrame {
 
         this.setTitle("Calculate matrix program");
         this.setContentPane(matrixPanel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setLocation(700, 500);
         this.setResizable(true);
         this.pack();
@@ -176,7 +176,7 @@ public class MatrixForm extends JFrame {
                                                     (matrix3[0][0] * matrix3[1][2] * matrix3[2][1])))
                     ));
                 } catch (NumberFormatException exception) {
-                    answerTextArea.setText("Fill ur matrix right please");
+                    answerTextArea.setText(answerTextArea.getText() + "Fill ur matrix right please");
                 }
             }
         });

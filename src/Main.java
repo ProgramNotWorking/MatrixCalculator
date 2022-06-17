@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         EventQueue.invokeLater(() -> {
-            JFrame frame = new MatrixForm();
-            frame.setVisible(true);
-            frame.setExtendedState(JFrame.NORMAL);
+            JFrame startFrame = new StartMenuForm();
+            startFrame.setVisible(true);
+            startFrame.setExtendedState(JFrame.NORMAL);
         });
 
     }
