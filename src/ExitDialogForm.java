@@ -4,24 +4,32 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.util.Locale;
 
-public class ExitDIalogForm extends JFrame {
+public class ExitDialogForm extends JFrame {
     private JButton closeButton;
     private JTextField closeProgramField;
     private JButton cancelButton;
     private JPanel exitPanel;
 
-    public ExitDIalogForm() {
-        this.setTitle("");
+    public ExitDialogForm() {
+        this.setTitle("Exit window");
         this.setContentPane(exitPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocation(800, 450);
         this.setResizable(false);
+        this.pack();
 
         closeProgramField.setEditable(false);
 
         closeButton.addActionListener(e -> {
-            setVisible(false);
-            dispose();
+
+        });
+
+        cancelButton.addActionListener(e -> {
+            JFrame againFrame = new StartMenuForm();
+            againFrame.setVisible(true);
+            againFrame.setExtendedState(JFrame.NORMAL);
+
+            exitPanel.setVisible(false);
         });
 
     }
