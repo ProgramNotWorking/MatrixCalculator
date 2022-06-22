@@ -2,8 +2,6 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowListener;
 import java.util.Locale;
 
 public class StartMenuForm extends JFrame {
@@ -22,6 +20,14 @@ public class StartMenuForm extends JFrame {
         this.pack();
 
         textField.setEditable(false);
+
+        matrixButton.setBackground(Color.BLACK);
+        matrixButton.setForeground(Color.WHITE);
+        calculatorButton.setBackground(Color.BLACK);
+        calculatorButton.setForeground(Color.WHITE);
+        menuPanel.setBackground(Color.BLACK);
+        textField.setBackground(Color.BLACK);
+        textField.setSelectedTextColor(Color.WHITE);
 
         matrixButton.addActionListener(e -> {
             EventQueue.invokeLater(() -> {

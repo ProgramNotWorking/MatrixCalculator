@@ -13,7 +13,7 @@ public class ExitDialogForm extends JFrame {
     public ExitDialogForm() {
         this.setTitle("Exit window");
         this.setContentPane(exitPanel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setLocation(800, 450);
         this.setResizable(false);
         this.pack();
@@ -21,7 +21,7 @@ public class ExitDialogForm extends JFrame {
         closeProgramField.setEditable(false);
 
         closeButton.addActionListener(e -> {
-
+            System.exit(1);
         });
 
         cancelButton.addActionListener(e -> {
@@ -51,6 +51,7 @@ public class ExitDialogForm extends JFrame {
     private void $$$setupUI$$$() {
         exitPanel = new JPanel();
         exitPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1, true, true));
+        exitPanel.setVisible(true);
         closeButton = new JButton();
         closeButton.setText("Yes");
         exitPanel.add(closeButton, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTH, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
