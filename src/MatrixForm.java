@@ -4,7 +4,10 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class MatrixForm extends JFrame {
     private JTextField mas11;
@@ -26,7 +29,7 @@ public class MatrixForm extends JFrame {
     final private int[][] matrix2 = new int[2][2];
     final private int[][] matrix3 = new int[3][3];
 
-    public MatrixForm() {
+    public MatrixForm() throws FileNotFoundException {
 
         this.setTitle("Calculate matrix program");
         this.setContentPane(matrixPanel);
@@ -207,6 +210,80 @@ public class MatrixForm extends JFrame {
             mas22.setLocation(73, 40);
         });
 
+        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
+        File themeFile = new File(path);
+        Scanner scanner = new Scanner(themeFile);
+
+        if (scanner.nextLine().equalsIgnoreCase("selected")) {
+            setBlackTheme();
+        } else {
+            setWhiteTheme();
+        }
+
+    }
+
+    private void setBlackTheme() {
+        twoOnTwoButton.setBackground(Color.BLACK);
+        twoOnTwoButton.setForeground(Color.WHITE);
+        threeOnThreeButton.setBackground(Color.BLACK);
+        threeOnThreeButton.setForeground(Color.WHITE);
+        clearButton.setBackground(Color.BLACK);
+        clearButton.setForeground(Color.WHITE);
+        calculateButton.setBackground(Color.BLACK);
+        calculateButton.setForeground(Color.WHITE);
+        mas11.setBackground(Color.BLACK);
+        mas12.setBackground(Color.BLACK);
+        mas13.setBackground(Color.BLACK);
+        mas21.setBackground(Color.BLACK);
+        mas22.setBackground(Color.BLACK);
+        mas23.setBackground(Color.BLACK);
+        mas31.setBackground(Color.BLACK);
+        mas32.setBackground(Color.BLACK);
+        mas33.setBackground(Color.BLACK);
+        mas11.setForeground(Color.WHITE);
+        mas12.setForeground(Color.WHITE);
+        mas13.setForeground(Color.WHITE);
+        mas21.setForeground(Color.WHITE);
+        mas22.setForeground(Color.WHITE);
+        mas23.setForeground(Color.WHITE);
+        mas31.setForeground(Color.WHITE);
+        mas32.setForeground(Color.WHITE);
+        mas33.setForeground(Color.WHITE);
+        answerTextArea.setBackground(Color.BLACK);
+        answerTextArea.setSelectedTextColor(Color.WHITE);
+        matrixPanel.setBackground(Color.GRAY);
+    }
+
+    private void setWhiteTheme()  {
+        twoOnTwoButton.setBackground(Color.WHITE);
+        twoOnTwoButton.setForeground(Color.BLACK);
+        threeOnThreeButton.setBackground(Color.WHITE);
+        threeOnThreeButton.setForeground(Color.BLACK);
+        clearButton.setBackground(Color.WHITE);
+        clearButton.setForeground(Color.BLACK);
+        calculateButton.setBackground(Color.WHITE);
+        calculateButton.setForeground(Color.BLACK);
+        mas11.setBackground(Color.WHITE);
+        mas12.setBackground(Color.WHITE);
+        mas13.setBackground(Color.WHITE);
+        mas21.setBackground(Color.WHITE);
+        mas22.setBackground(Color.WHITE);
+        mas23.setBackground(Color.WHITE);
+        mas31.setBackground(Color.WHITE);
+        mas32.setBackground(Color.WHITE);
+        mas33.setBackground(Color.WHITE);
+        mas11.setForeground(Color.BLACK);
+        mas12.setForeground(Color.BLACK);
+        mas13.setForeground(Color.BLACK);
+        mas21.setForeground(Color.BLACK);
+        mas22.setForeground(Color.BLACK);
+        mas23.setForeground(Color.BLACK);
+        mas31.setForeground(Color.BLACK);
+        mas32.setForeground(Color.BLACK);
+        mas33.setForeground(Color.BLACK);
+        answerTextArea.setBackground(Color.WHITE);
+        answerTextArea.setSelectedTextColor(Color.BLACK);
+        matrixPanel.setBackground(Color.WHITE);
     }
 
 

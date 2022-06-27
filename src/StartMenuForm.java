@@ -2,15 +2,27 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class StartMenuForm extends JFrame {
     private JButton matrixButton;
     private JButton calculatorButton;
     private JPanel menuPanel;
     private JTextField textField;
+    private JRadioButton darkThemeButton;
 
-    public StartMenuForm() {
+    String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
+    File themeFile = new File(path);
+    Scanner scanner = new Scanner(themeFile);
+    PrintStream changeThemeFile = new PrintStream(themeFile);
+
+    public boolean isDarkTheme;
+
+    public StartMenuForm() throws FileNotFoundException {
         $$$setupUI$$$();
         this.setTitle("Menu");
         this.setContentPane(menuPanel);
@@ -20,14 +32,6 @@ public class StartMenuForm extends JFrame {
         this.pack();
 
         textField.setEditable(false);
-
-        matrixButton.setBackground(Color.BLACK);
-        matrixButton.setForeground(Color.WHITE);
-        calculatorButton.setBackground(Color.BLACK);
-        calculatorButton.setForeground(Color.WHITE);
-        menuPanel.setBackground(Color.BLACK);
-        textField.setBackground(Color.BLACK);
-        textField.setSelectedTextColor(Color.WHITE);
 
         matrixButton.addActionListener(e -> {
             EventQueue.invokeLater(() -> {
@@ -43,6 +47,18 @@ public class StartMenuForm extends JFrame {
                 calculatorFrame.setVisible(true);
                 calculatorFrame.setExtendedState(JFrame.NORMAL);
             });
+        });
+
+        darkThemeButton.addActionListener(e -> {
+            if (scanner.nextLine().equalsIgnoreCase("selected") || darkThemeButton.isSelected()) {
+                setDarkTheme();
+                isDarkTheme = true;
+                changeThemeFile.println("selected");
+            } else {
+                setLightTheme();
+                isDarkTheme = false;
+                changeThemeFile.println("unselected");
+            }
         });
 
 //        this.addWindowListener(new WindowAdapter() {
@@ -61,10 +77,34 @@ public class StartMenuForm extends JFrame {
 
     }
 
-    private void setDefaultCloseOperation() {
+    private void setDefaultCloseOperation() throws FileNotFoundException {
         JFrame exitFrame = new ExitDialogForm();
         exitFrame.setVisible(true);
         exitFrame.setExtendedState(JFrame.NORMAL);
+    }
+
+    private void setDarkTheme() {
+        matrixButton.setBackground(Color.BLACK);
+        matrixButton.setForeground(Color.WHITE);
+        calculatorButton.setBackground(Color.BLACK);
+        calculatorButton.setForeground(Color.WHITE);
+        menuPanel.setBackground(Color.BLACK);
+        textField.setBackground(Color.BLACK);
+        textField.setSelectedTextColor(Color.WHITE);
+        darkThemeButton.setBackground(Color.BLACK);
+        darkThemeButton.setForeground(Color.WHITE);
+    }
+
+    private void setLightTheme() {
+        matrixButton.setBackground(Color.WHITE);
+        matrixButton.setForeground(Color.BLACK);
+        calculatorButton.setBackground(Color.WHITE);
+        calculatorButton.setForeground(Color.BLACK);
+        menuPanel.setBackground(Color.WHITE);
+        textField.setBackground(Color.WHITE);
+        textField.setSelectedTextColor(Color.BLACK);
+        darkThemeButton.setBackground(Color.WHITE);
+        darkThemeButton.setForeground(Color.BLACK);
     }
 
 
@@ -77,7 +117,7 @@ public class StartMenuForm extends JFrame {
      */
     private void $$$setupUI$$$() {
         menuPanel = new JPanel();
-        menuPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
+        menuPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
         menuPanel.setMinimumSize(new Dimension(500, 300));
         menuPanel.setPreferredSize(new Dimension(300, 100));
         matrixButton = new JButton();
@@ -91,6 +131,9 @@ public class StartMenuForm extends JFrame {
         if (textFieldFont != null) textField.setFont(textFieldFont);
         textField.setText("Choose what u want");
         menuPanel.add(textField, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        darkThemeButton = new JRadioButton();
+        darkThemeButton.setText("Dark theme");
+        menuPanel.add(darkThemeButton, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_NORTHEAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**

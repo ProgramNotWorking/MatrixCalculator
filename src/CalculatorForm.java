@@ -6,7 +6,10 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class CalculatorForm extends JFrame {
     private JTextField expressionField;
@@ -28,7 +31,7 @@ public class CalculatorForm extends JFrame {
     private JButton equalsButton;
     private JPanel calculatorPanel;
 
-    public CalculatorForm() {
+    public CalculatorForm() throws FileNotFoundException {
         this.setTitle("Calculator");
         this.setContentPane(calculatorPanel);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -63,6 +66,25 @@ public class CalculatorForm extends JFrame {
                         expressionField.setText(expressionField.getText() + "0");
                     case KeyEvent.VK_MINUS:
                         expressionField.setText(expressionField.getText() + " - ");
+                    case KeyEvent.VK_PLUS:
+                        expressionField.setText(expressionField.getText() + " + ");
+                    case KeyEvent.VK_SEPARATOR:
+                        expressionField.setText(expressionField.getText() + " / ");
+                    case KeyEvent.VK_EQUALS:
+                        CalculatorThings calculator = new CalculatorThings(expressionField.getText());
+                        calculator.setStringArray();
+                        expressionField.setText(null);
+
+                        if (calculator.getSecondNumber() == 0 && calculator.getSign().equals("/")) {
+                            expressionField.setText("Дурак?");
+                        } else if (expressionField.getText() == null) {
+                            expressionField.setText("Enter expression");
+                        } else {
+                            expressionField.setText(Double.toString(calculator.calculationProcess()));
+                        }
+                        break;
+                    default:
+
                 }
             }
 
@@ -135,7 +157,7 @@ public class CalculatorForm extends JFrame {
             expressionField.setText(null);
 
             if (calculator.getSecondNumber() == 0 && calculator.getSign().equals("/")) {
-                expressionField.setText("Совсем дурак?");
+                expressionField.setText("Дурак?");
             } else if (expressionField.getText() == null) {
                 expressionField.setText("Enter expression");
             } else {
@@ -167,6 +189,92 @@ public class CalculatorForm extends JFrame {
             }
         });
 
+        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
+        File themeFile = new File(path);
+        Scanner scanner = new Scanner(themeFile);
+
+        if (scanner.nextLine().equalsIgnoreCase("selected")) {
+            setBlackTheme();
+        } else {
+            setWhiteTheme();
+        }
+
+    }
+
+    public void setBlackTheme() {
+        number0.setBackground(Color.BLACK);
+        number0.setForeground(Color.WHITE);
+        number1.setBackground(Color.BLACK);
+        number1.setForeground(Color.WHITE);
+        number2.setBackground(Color.BLACK);
+        number2.setForeground(Color.WHITE);
+        number3.setBackground(Color.BLACK);
+        number3.setForeground(Color.WHITE);
+        number4.setBackground(Color.BLACK);
+        number4.setForeground(Color.WHITE);
+        number5.setBackground(Color.BLACK);
+        number5.setForeground(Color.WHITE);
+        number6.setBackground(Color.BLACK);
+        number6.setForeground(Color.WHITE);
+        number7.setBackground(Color.BLACK);
+        number7.setForeground(Color.WHITE);
+        number8.setBackground(Color.BLACK);
+        number8.setForeground(Color.WHITE);
+        number9.setBackground(Color.BLACK);
+        number9.setForeground(Color.WHITE);
+        plusButton.setBackground(Color.BLACK);
+        plusButton.setForeground(Color.WHITE);
+        minusButton.setBackground(Color.BLACK);
+        minusButton.setForeground(Color.WHITE);
+        divideButton.setBackground(Color.BLACK);
+        divideButton.setForeground(Color.WHITE);
+        multiplyButton.setBackground(Color.BLACK);
+        multiplyButton.setForeground(Color.WHITE);
+        equalsButton.setBackground(Color.BLACK);
+        equalsButton.setForeground(Color.WHITE);
+        clearButton.setBackground(Color.BLACK);
+        clearButton.setForeground(Color.WHITE);
+        calculatorPanel.setBackground(Color.GRAY);
+        expressionField.setBackground(Color.BLACK);
+        expressionField.setSelectedTextColor(Color.WHITE);
+    }
+
+    private void setWhiteTheme() {
+        number0.setBackground(Color.WHITE);
+        number1.setBackground(Color.WHITE);
+        number2.setBackground(Color.WHITE);
+        number3.setBackground(Color.WHITE);
+        number4.setBackground(Color.WHITE);
+        number5.setBackground(Color.WHITE);
+        number6.setBackground(Color.WHITE);
+        number7.setBackground(Color.WHITE);
+        number8.setBackground(Color.WHITE);
+        number9.setBackground(Color.WHITE);
+        plusButton.setBackground(Color.WHITE);
+        minusButton.setBackground(Color.WHITE);
+        divideButton.setBackground(Color.WHITE);
+        multiplyButton.setBackground(Color.WHITE);
+        equalsButton.setBackground(Color.WHITE);
+        clearButton.setBackground(Color.WHITE);
+        expressionField.setBackground(Color.WHITE);
+        calculatorPanel.setBackground(Color.WHITE);
+        number0.setForeground(Color.BLACK);
+        number1.setForeground(Color.BLACK);
+        number2.setForeground(Color.BLACK);
+        number3.setForeground(Color.BLACK);
+        number4.setForeground(Color.BLACK);
+        number5.setForeground(Color.BLACK);
+        number6.setForeground(Color.BLACK);
+        number7.setForeground(Color.BLACK);
+        number8.setForeground(Color.BLACK);
+        number9.setForeground(Color.BLACK);
+        plusButton.setForeground(Color.BLACK);
+        minusButton.setForeground(Color.BLACK);
+        divideButton.setForeground(Color.BLACK);
+        multiplyButton.setForeground(Color.BLACK);
+        equalsButton.setForeground(Color.BLACK);
+        clearButton.setForeground(Color.BLACK);
+        expressionField.setSelectedTextColor(Color.BLACK);
     }
 
     {
@@ -264,6 +372,9 @@ public class CalculatorForm extends JFrame {
         expressionField = new JTextField();
         Font expressionFieldFont = this.$$$getFont$$$(null, -1, 32, expressionField.getFont());
         if (expressionFieldFont != null) expressionField.setFont(expressionFieldFont);
+        expressionField.setInheritsPopupMenu(true);
+        expressionField.setSelectedTextColor(new Color(-1973791));
+        expressionField.setSelectionColor(new Color(-1));
         calculatorPanel.add(expressionField, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 3, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         number1 = new JButton();
         Font number1Font = this.$$$getFont$$$(null, -1, 24, number1.getFont());

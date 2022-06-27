@@ -2,7 +2,10 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class ExitDialogForm extends JFrame {
     private JButton closeButton;
@@ -10,11 +13,11 @@ public class ExitDialogForm extends JFrame {
     private JButton cancelButton;
     private JPanel exitPanel;
 
-    public ExitDialogForm() {
+    public ExitDialogForm() throws FileNotFoundException {
         this.setTitle("Exit window");
         this.setContentPane(exitPanel);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.setLocation(800, 450);
+        this.setLocation(850, 450);
         this.setResizable(false);
         this.pack();
 
@@ -25,13 +28,48 @@ public class ExitDialogForm extends JFrame {
         });
 
         cancelButton.addActionListener(e -> {
-            JFrame againFrame = new StartMenuForm();
+            JFrame againFrame = null;
+            try {
+                againFrame = new StartMenuForm();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
             againFrame.setVisible(true);
             againFrame.setExtendedState(JFrame.NORMAL);
 
             exitPanel.setVisible(false);
         });
 
+        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
+        File themeFile = new File(path);
+        Scanner scanner = new Scanner(themeFile);
+
+        if (scanner.nextLine().equalsIgnoreCase("selected")) {
+            setBlackTheme();
+        } else {
+            setWhiteTheme();
+        }
+
+    }
+
+    private void setBlackTheme() {
+        cancelButton.setBackground(Color.BLACK);
+        cancelButton.setForeground(Color.WHITE);
+        closeButton.setBackground(Color.BLACK);
+        closeButton.setForeground(Color.WHITE);
+        closeProgramField.setBackground(Color.BLACK);
+        closeProgramField.setSelectedTextColor(Color.WHITE);
+        exitPanel.setBackground(Color.BLACK);
+    }
+
+    private void setWhiteTheme() {
+        cancelButton.setBackground(Color.WHITE);
+        cancelButton.setForeground(Color.BLACK);
+        closeButton.setBackground(Color.WHITE);
+        closeButton.setForeground(Color.BLACK);
+        closeProgramField.setBackground(Color.WHITE);
+        closeProgramField.setSelectedTextColor(Color.BLACK);
+        exitPanel.setBackground(Color.WHITE);
     }
 
     {

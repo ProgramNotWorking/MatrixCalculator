@@ -151,6 +151,9 @@
         </constraints>
         <properties>
           <font size="32"/>
+          <inheritsPopupMenu value="true"/>
+          <selectedTextColor color="-1973791"/>
+          <selectionColor color="-1"/>
         </properties>
       </component>
       <component id="14280" class="javax.swing.JButton" binding="number1">
