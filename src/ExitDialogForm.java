@@ -13,7 +13,7 @@ public class ExitDialogForm extends JFrame {
     private JButton cancelButton;
     private JPanel exitPanel;
 
-    public ExitDialogForm() throws FileNotFoundException {
+    public ExitDialogForm(boolean aboutTheme) throws FileNotFoundException {
         this.setTitle("Exit window");
         this.setContentPane(exitPanel);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -40,14 +40,14 @@ public class ExitDialogForm extends JFrame {
             exitPanel.setVisible(false);
         });
 
-        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
-        File themeFile = new File(path);
-        Scanner scanner = new Scanner(themeFile);
+        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme.txt";
+        File infoThemeFile = new File(path);
+        Scanner scanner = new Scanner(infoThemeFile);
 
         if (scanner.nextLine().equalsIgnoreCase("selected")) {
-            setBlackTheme();
+            this.setBlackTheme();
         } else {
-            setWhiteTheme();
+            this.setWhiteTheme();
         }
 
     }
@@ -88,7 +88,7 @@ public class ExitDialogForm extends JFrame {
      */
     private void $$$setupUI$$$() {
         exitPanel = new JPanel();
-        exitPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1, true, true));
+        exitPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
         exitPanel.setVisible(true);
         closeButton = new JButton();
         closeButton.setText("Yes");

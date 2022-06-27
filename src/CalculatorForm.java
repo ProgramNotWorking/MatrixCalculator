@@ -31,7 +31,7 @@ public class CalculatorForm extends JFrame {
     private JButton equalsButton;
     private JPanel calculatorPanel;
 
-    public CalculatorForm() throws FileNotFoundException {
+    public CalculatorForm(boolean aboutTheme) throws FileNotFoundException {
         this.setTitle("Calculator");
         this.setContentPane(calculatorPanel);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -189,14 +189,10 @@ public class CalculatorForm extends JFrame {
             }
         });
 
-        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
-        File themeFile = new File(path);
-        Scanner scanner = new Scanner(themeFile);
-
-        if (scanner.nextLine().equalsIgnoreCase("selected")) {
-            setBlackTheme();
+        if (aboutTheme) {
+            this.setBlackTheme();
         } else {
-            setWhiteTheme();
+            this.setWhiteTheme();
         }
 
     }

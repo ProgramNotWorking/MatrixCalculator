@@ -15,11 +15,6 @@ public class StartMenuForm extends JFrame {
     private JTextField textField;
     private JRadioButton darkThemeButton;
 
-    String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
-    File themeFile = new File(path);
-    Scanner scanner = new Scanner(themeFile);
-    PrintStream changeThemeFile = new PrintStream(themeFile);
-
     public boolean isDarkTheme;
 
     public StartMenuForm() throws FileNotFoundException {
@@ -35,7 +30,12 @@ public class StartMenuForm extends JFrame {
 
         matrixButton.addActionListener(e -> {
             EventQueue.invokeLater(() -> {
-                JFrame matrixFrame = new MatrixForm();
+                JFrame matrixFrame = null;
+                try {
+                    matrixFrame = new MatrixForm(isDarkTheme);
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
                 matrixFrame.setVisible(true);
                 matrixFrame.setExtendedState(JFrame.NORMAL);
             });
@@ -43,21 +43,30 @@ public class StartMenuForm extends JFrame {
 
         calculatorButton.addActionListener(e -> {
             EventQueue.invokeLater(() -> {
-                JFrame calculatorFrame = new CalculatorForm();
+                JFrame calculatorFrame = null;
+                try {
+                    calculatorFrame = new CalculatorForm(isDarkTheme);
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
                 calculatorFrame.setVisible(true);
                 calculatorFrame.setExtendedState(JFrame.NORMAL);
             });
         });
 
+        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme.txt";
+        File infoThemeFile = new File(path);
+        PrintStream printInfoAboutTheme = new PrintStream(infoThemeFile);
+
         darkThemeButton.addActionListener(e -> {
-            if (scanner.nextLine().equalsIgnoreCase("selected") || darkThemeButton.isSelected()) {
-                setDarkTheme();
-                isDarkTheme = true;
-                changeThemeFile.println("selected");
+            isDarkTheme = darkThemeButton.isSelected();
+
+            if (isDarkTheme) {
+                this.setDarkTheme();
+                printInfoAboutTheme.println("selected");
             } else {
-                setLightTheme();
-                isDarkTheme = false;
-                changeThemeFile.println("unselected");
+                this.setLightTheme();
+                printInfoAboutTheme.println("unselected");
             }
         });
 
@@ -78,7 +87,7 @@ public class StartMenuForm extends JFrame {
     }
 
     private void setDefaultCloseOperation() throws FileNotFoundException {
-        JFrame exitFrame = new ExitDialogForm();
+        JFrame exitFrame = new ExitDialogForm(isDarkTheme);
         exitFrame.setVisible(true);
         exitFrame.setExtendedState(JFrame.NORMAL);
     }

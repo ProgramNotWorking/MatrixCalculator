@@ -29,7 +29,7 @@ public class MatrixForm extends JFrame {
     final private int[][] matrix2 = new int[2][2];
     final private int[][] matrix3 = new int[3][3];
 
-    public MatrixForm() throws FileNotFoundException {
+    public MatrixForm(boolean aboutTheme) throws FileNotFoundException {
 
         this.setTitle("Calculate matrix program");
         this.setContentPane(matrixPanel);
@@ -210,14 +210,10 @@ public class MatrixForm extends JFrame {
             mas22.setLocation(73, 40);
         });
 
-        String path = "C:\\Users\\Ve7te\\IdeaProjects\\Matrix\\src\\InfoAboutTheme";
-        File themeFile = new File(path);
-        Scanner scanner = new Scanner(themeFile);
-
-        if (scanner.nextLine().equalsIgnoreCase("selected")) {
-            setBlackTheme();
+        if (aboutTheme) {
+            this.setBlackTheme();
         } else {
-            setWhiteTheme();
+            this.setWhiteTheme();
         }
 
     }
